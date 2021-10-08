@@ -1,0 +1,72 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerCombat : MonoBehaviour
+{
+    //initalizing variables necessary for combat
+
+    public float shotCooldown = 1f;
+    private float isFiring;
+
+    public GameObject projectile;
+    public GameObject player;
+
+    public Transform attackPoint;
+    public float damage = 10f;
+
+
+    private Vector3 playerPosition;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // will be necessary for actually being able to fire lyre
+        
+        playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+
+        // putting in voids so they get called
+        ShotTimer();
+        FiringModule(); 
+    }
+
+    void FiringModule()
+    {
+        // control so it actually detects if it shoots
+        isFiring = Input.GetAxis("Fire1");
+
+
+        if (isFiring != 0 && shotCooldown <= 0)
+        {
+            //this is for player position detection
+
+            playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+
+            GameObject projectileObject = Instantiate(projectile, attackPoint.position, player.transform.rotation);
+            var projectileValues = projectileObject.GetComponent<PlayerProjectiles>();
+            if (projectileValues != null)
+            {
+                projectileValues.damage = damage;
+            }
+
+            shotCooldown = 1f;
+        }
+
+    }
+    void ShotTimer()
+    {
+        //countdown so user can't spam attacks
+        if (shotCooldown >= 0)
+        {
+            shotCooldown -= Time.deltaTime;
+
+        }
+    }
+}
+
+

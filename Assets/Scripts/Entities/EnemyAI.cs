@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     public float movementSpeed = 6f;
     public float minDistance = 2f;
     public float maxDistance = 10f;
+    public float maxHeight = 1.5f;
     public GameObject exclamationObject; // Temporary visual object (Use to show if the enemy is detecting the player within out side max distance and vice versa)
 
     bool move = false;
@@ -26,6 +27,9 @@ public class EnemyAI : MonoBehaviour
             Shooter = false;
             Debug.LogWarning("Enemy set to more than one class, make sure it's set one class!");
             return;
+        }else if(!Melee && !Shooter)
+        {
+            Debug.LogWarning("Enemy is not set to a class");
         }
     }
 
@@ -70,7 +74,18 @@ public class EnemyAI : MonoBehaviour
 
     void CheckDistance()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) <= maxDistance && player != null)
+        //Specifies to check the distance on the x-axis
+        Vector2 self = new Vector2(transform.position.x, 0);
+        Vector2 other = new Vector2(player.transform.position.x, 0);
+
+        float pos = Vector2.Distance(self, other);
+
+        //Specifies to check the height between entities
+        float selfHeight = transform.position.y + maxHeight;
+        float otherHeight = player.transform.position.y;
+        // When the player is on the same height or below the enemy
+
+        if (pos <= maxDistance && selfHeight >= otherHeight && player != null) 
         {
             exclamationObject.SetActive(true);
             FaceTarget();
@@ -80,7 +95,7 @@ public class EnemyAI : MonoBehaviour
                 commenceAttack = true;
                 Attack();
             }
-            if (Vector3.Distance(transform.position, player.transform.position) <= minDistance)
+            if (pos <= minDistance)
             {
                 //Stop moving
                 // Attack from close 
@@ -94,7 +109,7 @@ public class EnemyAI : MonoBehaviour
             }
             else
             {
-                if (Vector3.Distance(transform.position, player.transform.position) >= minDistance)
+                if (pos >= minDistance)
                 {
                     //Keep moving
                     move = true;
@@ -103,7 +118,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(player.transform.position, transform.position) >= maxDistance)
+            if (pos >= maxDistance || selfHeight <= otherHeight) //When player is on top or above the enemy
             {
                 exclamationObject.SetActive(false);
                 move = false; // Stops moving when player is outside the max distance

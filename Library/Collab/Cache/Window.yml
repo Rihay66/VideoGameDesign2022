@@ -14,10 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
+    - Assets/Prefabs/Enemies/Enemy_Melee_PlaceHolder.prefab
+    - Assets/Prefabs/Enemies/Enemy_Test.prefab
+    - Assets/Prefabs/Player/Player.prefab
+    - Assets/Scenes/EntitiesTestScene.unity
+    - Assets/Scripts/Entities/EnemyAI.cs
+    - ProjectSettings/DynamicsManager.asset
+    - ProjectSettings/Physics2DSettings.asset
+    - ProjectSettings/TagManager.asset
     - 
-    m_Values: 01
-  RevisionSummary: Made some changes of making the projectile not destroy itself
-    before any code of doing damage does any effect
+    m_Values: 000000000000000000
+  RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
   HistoryPageNumber: 0

@@ -339,7 +339,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3776362118292018373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
   exclamationObject: {fileID: 2101483219}
   Melee: 0
   Shooter: 1
-  fireRate: 2
+  fireRate: 3
   damage: 10
   projectilePrefab: {fileID: 8686024516355725038, guid: bf66bf0ee44f9be4ca0a26f660e8fb20, type: 3}
   AttackPoint: {fileID: 2039710207}

@@ -16,14 +16,12 @@ public class PlayerCombat : MonoBehaviour
     public float damage = 10f;
 
 
-    private Vector3 playerPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         // will be necessary for actually being able to fire lyre
-        
-        playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+
     }
 
     // Update is called once per frame
@@ -32,7 +30,7 @@ public class PlayerCombat : MonoBehaviour
 
         // putting in voids so they get called
         ShotTimer();
-        FiringModule(); 
+        FiringModule();
     }
 
     void FiringModule()
@@ -45,7 +43,6 @@ public class PlayerCombat : MonoBehaviour
         {
             //this is for player position detection
 
-            playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
             GameObject projectileObject = Instantiate(projectile, attackPoint.position, player.transform.rotation);
             var projectileValues = projectileObject.GetComponent<PlayerProjectiles>();
@@ -67,6 +64,7 @@ public class PlayerCombat : MonoBehaviour
 
         }
     }
+
 }
 
 

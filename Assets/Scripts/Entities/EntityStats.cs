@@ -6,7 +6,7 @@ public class EntityStats : MonoBehaviour
 {
     [Header("Stats")]
     public float MaxHealth = 100f;
-    protected float currentHealth;
+    public float currentHealth { get; private set; }
 
     private void Start()
     {

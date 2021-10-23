@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // this makes it to where the cursor defines the user's sight direction
         Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        // mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         // minuses directions to where you don't have an epileptic seizure
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
         transform.up = direction;

@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         // control initalize
         rb = GetComponent<Rigidbody2D>();
         playerSpeed = 10.0f;
-        jumpPower = 10.0f;
+        jumpPower = 500.0f;
         isJumping = false;
 
     }
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         // asking when leftright be moving so can move player
         if (leftRight != 0)
         {
-            rb.AddForce(Time.deltaTime * playerSpeed * transform.right, ForceMode2D.Impulse);
+            rb.AddForce(playerSpeed * transform.right, ForceMode2D.Impulse);
             rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -playerSpeed, playerSpeed), rb.velocity.y);
             xMoving = true;
         }

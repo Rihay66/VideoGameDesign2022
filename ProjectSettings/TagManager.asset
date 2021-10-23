@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Enemy
   - EnemyProjectile
+  - EndLevel
+  - DeathPit
   layers:
   - Default
   - TransparentFX

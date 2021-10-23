@@ -345,15 +345,20 @@
 "Assets/Scripts/Entities/EnemyAIMelee.cs"
 "Assets/Scripts/Entities/EnemyAIShooter.cs"
 "Assets/Scripts/Entities/EnemyProjectile.cs"
+"Assets/Scripts/Entities/EnemyStats.cs"
 "Assets/Scripts/Entities/EntityStats.cs"
+"Assets/Scripts/Player/CameraScript.cs"
 "Assets/Scripts/Player/HealthCalculator.cs"
 "Assets/Scripts/Player/PlayerCombat.cs"
 "Assets/Scripts/Player/PlayerController.cs"
 "Assets/Scripts/Player/PlayerManager.cs"
 "Assets/Scripts/Player/PlayerProjectiles.cs"
-"Assets/Scripts/TemporaryScripts/DeathPit_Temporary.cs"
-"Assets/Scripts/TemporaryScripts/EndOfLevel_Temporary.cs"
+"Assets/Scripts/Player/PlayerStats.cs"
+"Assets/Scripts/Player/PlayerTrigger_Temporary.cs"
+"Assets/Scripts/TemporaryScripts/Billboard.cs"
 "Assets/Scripts/TemporaryScripts/GameManager_Temporary.cs"
+"Assets/Scripts/TemporaryScripts/HealthBar.cs"
+"Assets/Scripts/TemporaryScripts/QuitButton.cs"
 -langversion:8.0
 
 /deterministic

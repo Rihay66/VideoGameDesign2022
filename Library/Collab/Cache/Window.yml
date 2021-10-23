@@ -14,21 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
+    - Assets/Prefabs/Enemies/Enemy_Melee_PlaceHolder.prefab
     - Assets/Prefabs/Enemies/Enemy_Shooter_PlaceHolder.prefab
-    - Assets/Prefabs/Enemies/Enemy_Shooter_PlaceHolder.prefab.meta
-    - Assets/Scenes/MainScene_Demo.unity
-    - Assets/Scenes/MainScene_Demo.unity.meta
-    - Assets/Scripts/TemporaryScripts.meta
-    - Assets/Scripts/TemporaryScripts/DeathPit_Temporary.cs
-    - Assets/Scripts/TemporaryScripts/DeathPit_Temporary.cs.meta
-    - Assets/Scripts/TemporaryScripts/EndOfLevel_Temporary.cs
-    - Assets/Scripts/TemporaryScripts/EndOfLevel_Temporary.cs.meta
-    - Assets/Scripts/TemporaryScripts/GameManager_Temporary.cs
-    - Assets/Scripts/TemporaryScripts/GameManager_Temporary.cs.meta
+    - Assets/Prefabs/Enemies/HealthBar-Armin.prefab
+    - Assets/Prefabs/Enemies/HealthBar-Armin.prefab.meta
+    - Assets/Prefabs/Enemies/HealthBar_Entity.prefab
+    - Assets/Prefabs/Enemies/HealthBar_Entity.prefab.meta
+    - Assets/Scenes/Temporary_Scenes/ExitScene.unity
+    - Assets/Scenes/Temporary_Scenes/MainScene_Demo.unity
+    - Assets/Scripts/Entities/EnemyStats.cs
+    - Assets/Scripts/TemporaryScripts/HealthBar.cs
+    - Assets/Scripts/TemporaryScripts/HealthBar.cs.meta
     - 
-    m_Values: 000000000000000000000000
-  RevisionSummary: 
+    m_Values: 010101010101010101010101
+  RevisionSummary: 'Added a health bar UI to the enemy, editted the test map and
+    text on the  '
   ChangesSearchValue: 
-  SelectedHistoryRevision: f2e39475429d0a9a67cedac79464a38c3a1da472
+  SelectedHistoryRevision: 
   HistoryPageNumber: 0
-  TabIndex: 1
+  TabIndex: 0

@@ -25,7 +25,7 @@ public class HealthCalculator : MonoBehaviour
     void HealthProcedure()
     {
         //grabbing hp value
-        health = player.GetComponent<EntityStats>().MaxHealth;
+        health = player.GetComponent<EntityStats>().currentHealth;
 
         //changing hp value
         healthBarSize = new Vector3(health * .01f, .9f, 1);

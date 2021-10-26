@@ -53,7 +53,7 @@
     <UnityVersion>2021.1.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="D:\Programs\Microsoft Visual Studios 2019\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\PlayerCombat.cs" />
@@ -69,8 +69,10 @@
     <Compile Include="Assets\Scripts\Depreciated Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\MapSplitGenerator.cs" />
     <Compile Include="Assets\Scripts\Player\CameraScript.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyAIShooter.cs" />
+    <Compile Include="Assets\Scripts\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityStats.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\QuitButton.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />

@@ -92,6 +92,8 @@ public class EnemyAI : MonoBehaviour
             // Attack from distance
             if(Shooter && !Melee)
             {
+                // []Check if the player is above the enemy at a certain height make the reference transform object inside the enemy rotate only 45 degrees 
+                // []The referene is only valid when the enemy is set to a shooter class
                 commenceAttack = true;
                 Attack();
             }

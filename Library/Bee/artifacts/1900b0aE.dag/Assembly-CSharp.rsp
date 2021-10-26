@@ -347,6 +347,8 @@
 "Assets/Scripts/Entities/EnemyProjectile.cs"
 "Assets/Scripts/Entities/EnemyStats.cs"
 "Assets/Scripts/Entities/EntityStats.cs"
+"Assets/Scripts/MapGenerator.cs"
+"Assets/Scripts/MapSplitGenerator.cs"
 "Assets/Scripts/Player/CameraScript.cs"
 "Assets/Scripts/Player/HealthCalculator.cs"
 "Assets/Scripts/Player/PlayerCombat.cs"

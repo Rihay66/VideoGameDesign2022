@@ -14,21 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
-    - Assets/Prefabs/Enemies/Enemy_Melee_PlaceHolder.prefab
-    - Assets/Prefabs/Enemies/Enemy_Shooter_PlaceHolder.prefab
-    - Assets/Prefabs/Enemies/HealthBar-Armin.prefab
-    - Assets/Prefabs/Enemies/HealthBar-Armin.prefab.meta
-    - Assets/Prefabs/Enemies/HealthBar_Entity.prefab
-    - Assets/Prefabs/Enemies/HealthBar_Entity.prefab.meta
-    - Assets/Scenes/Temporary_Scenes/ExitScene.unity
-    - Assets/Scenes/Temporary_Scenes/MainScene_Demo.unity
-    - Assets/Scripts/Entities/EnemyStats.cs
-    - Assets/Scripts/TemporaryScripts/HealthBar.cs
-    - Assets/Scripts/TemporaryScripts/HealthBar.cs.meta
     - 
-    m_Values: 010101010101010101010101
-  RevisionSummary: 'Added a health bar UI to the enemy, editted the test map and
-    text on the  '
+    m_Values: 01
+  RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
   HistoryPageNumber: 0

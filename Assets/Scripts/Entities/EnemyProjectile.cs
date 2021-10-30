@@ -11,15 +11,33 @@ public class EnemyProjectile : MonoBehaviour
     [Header("Properties")]
     public float speed = 10f;
 
-    private Rigidbody2D rb;
+    private Vector3 shootDirection;
 
     //[] Make the projectile go outwards depending on what the enemy is facing
     // -- May use a rigidbody to make collision more smoother
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * speed;
-        Destroy(gameObject, 6f);
+      
+    }
+
+    public void setup(Vector3 shootDir)
+    {
+        this.shootDirection = shootDir;
+        transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(shootDir));
+    }
+
+    static float GetAngleFromVectorFloat(Vector3 dir)
+    {
+        dir = dir.normalized;
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (n < 0) n += 360;
+
+        return n;
+    }
+
+    private void Update()
+    {
+        transform.position += shootDirection * speed * Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

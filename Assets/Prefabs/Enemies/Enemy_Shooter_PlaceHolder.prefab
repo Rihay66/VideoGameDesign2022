@@ -370,7 +370,7 @@ MonoBehaviour:
   movementSpeed: 2
   minDistance: 3.5
   maxDistance: 20
-  maxHeight: 1.5
+  maxHeight: 2
   exclamationObject: {fileID: 2101483219}
   Melee: 0
   Shooter: 1
@@ -378,6 +378,7 @@ MonoBehaviour:
   damage: 15
   projectilePrefab: {fileID: 8686024516355725038, guid: bf66bf0ee44f9be4ca0a26f660e8fb20, type: 3}
   AttackPoint: {fileID: 2039710207}
+  AttackTransformParent: {fileID: 5681952114830902525}
 --- !u!114 &-8848691489255073140
 MonoBehaviour:
   m_ObjectHideFlags: 0

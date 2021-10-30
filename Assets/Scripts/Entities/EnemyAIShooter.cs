@@ -17,6 +17,7 @@ public class EnemyAIShooter : EnemyAI
     [Header("Attack Properties")]
     public GameObject projectilePrefab;
     public Transform AttackPoint;
+    public Transform AttackTransformParent;
 
     private bool AttackIsReady = false;
 
@@ -31,6 +32,36 @@ public class EnemyAIShooter : EnemyAI
         else if (commenceAttack == false && player != null)
         {
             AttackPlayer(commenceAttack);
+        }
+    }
+
+    bool lookUp = false;
+
+    private void FixedUpdate()
+    {
+        //Specifies to check the distance on the x-axis
+        Vector2 self = new Vector2(transform.position.x, 0);
+        Vector2 other = new Vector2(player.transform.position.x, 0);
+
+        float pos = Vector2.Distance(self, other);
+  
+        //Specifies to check the height between entities
+        float selfHeight = transform.position.y + maxHeight;
+        float otherHeight = player.transform.position.y;
+        float centerHeight = transform.position.y + midHeight;
+  
+       if(otherHeight > centerHeight && !lookUp)
+       {
+            AttackTransformParent.Rotate(0, transform.rotation.y, 45f);
+            lookUp = !lookUp;
+            print("Looking up");
+       }
+       else if(otherHeight < centerHeight && lookUp)
+        {
+            //[] Figure out how to move the parent back to zero on the Z-axis while also keeping the transform rotation
+            AttackTransformParent.rotation = Quaternion.Euler(0, transform.rotation.y, 0);
+            lookUp = !lookUp;
+            print("Looking front");
         }
     }
 
@@ -55,10 +86,12 @@ public class EnemyAIShooter : EnemyAI
                 nextFire = Time.time + fireRate;
 
                 // Spawns a projectile
-                GameObject projectileObject = Instantiate(projectilePrefab, AttackPoint.position, AttackPoint.rotation);
+                GameObject projectileObject = Instantiate(projectilePrefab, AttackPoint.position, Quaternion.identity);
                 var projectile = projectileObject.GetComponent<EnemyProjectile>();
+                Vector3 shootDir = -(AttackTransformParent.position - AttackPoint.position).normalized;
                 if (projectile != null)
                 {
+                    projectile.setup(shootDir);
                     //Gives the projectile damage
                     projectile.projectileDamage = damage;
                     //Debug.Log("Added damage to projectile!");

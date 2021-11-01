@@ -13,13 +13,6 @@ public class EnemyProjectile : MonoBehaviour
 
     private Vector3 shootDirection;
 
-    //[] Make the projectile go outwards depending on what the enemy is facing
-    // -- May use a rigidbody to make collision more smoother
-    private void Start()
-    {
-      
-    }
-
     public void setup(Vector3 shootDir)
     {
         this.shootDirection = shootDir;

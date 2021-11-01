@@ -13,6 +13,7 @@ public class EnemyAIShooter : EnemyAI
     public float fireRate = 1f;
     private float nextFire = 0f;
     public float damage = 10f;
+    public float midHeight = 1f; //Used to check if the player is at a certain height so the enemy can aim up
 
     [Header("Attack Properties")]
     public GameObject projectilePrefab;
@@ -39,15 +40,9 @@ public class EnemyAIShooter : EnemyAI
 
     private void FixedUpdate()
     {
-        //Specifies to check the distance on the x-axis
-        Vector2 self = new Vector2(transform.position.x, 0);
-        Vector2 other = new Vector2(player.transform.position.x, 0);
-
-        float pos = Vector2.Distance(self, other);
-  
-        //Specifies to check the height between entities
-        float selfHeight = transform.position.y + maxHeight;
+        //The height of the player
         float otherHeight = player.transform.position.y;
+        //The height that adds in this position added with a height amount
         float centerHeight = transform.position.y + midHeight;
   
        if(otherHeight > centerHeight && !lookUp)
@@ -58,8 +53,7 @@ public class EnemyAIShooter : EnemyAI
        }
        else if(otherHeight < centerHeight && lookUp)
         {
-            //[] Figure out how to move the parent back to zero on the Z-axis while also keeping the transform rotation
-            AttackTransformParent.rotation = Quaternion.Euler(0, transform.rotation.y, 0);
+            AttackTransformParent.Rotate(0, transform.rotation.y, -45f);
             lookUp = !lookUp;
             print("Looking front");
         }

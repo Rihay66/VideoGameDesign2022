@@ -10,7 +10,6 @@ public class EnemyAI : MonoBehaviour
     public float minDistance = 2f;
     public float maxDistance = 10f;
     public float maxHeight = 1.5f;
-    public float midHeight = 0.75f;
     public GameObject exclamationObject; // Temporary visual object (Use to show if the enemy is detecting the player within out side max distance and vice versa)
 
     bool move = false;

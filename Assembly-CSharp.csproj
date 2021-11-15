@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.11</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2021.1.16f1</UnityVersion>
@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerTrigger_Temporary.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemPickUpProperties.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyProjectile.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
@@ -66,15 +67,20 @@
     <Compile Include="Assets\Scripts\TemporaryScripts\Billboard.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerProjectiles.cs" />
     <Compile Include="Assets\Scripts\Player\HealthCalculator.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\Depreciated Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\HealthBar.cs" />
-    <Compile Include="Assets\Scripts\MapSplitGenerator.cs" />
+    <Compile Include="Assets\Scripts\MapEngine\MapSplitGenerator.cs" />
+    <Compile Include="Assets\Scripts\Inventory\PlayerInventory.cs" />
     <Compile Include="Assets\Scripts\Player\CameraScript.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyAIShooter.cs" />
-    <Compile Include="Assets\Scripts\MapGenerator.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemPickup.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
+    <Compile Include="Assets\Scripts\MapEngine\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityStats.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\QuitButton.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\GameManager_Temporary.cs" />
   </ItemGroup>

@@ -16,4 +16,9 @@ public class PlayerStats : EntityStats
             manager.restartLevel();
         }
     }
+
+    public void RestoreHealth(float amount)
+    {
+        //[] add health to the player without going over the max health;
+    }
 }

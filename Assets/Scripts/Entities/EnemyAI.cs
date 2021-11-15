@@ -122,7 +122,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (pos >= maxDistance || selfHeight <= otherHeight) //When player is on top or above the enemy
             {
-                exclamationObject.SetActive(false);
+                exclamationObject.SetActive(false);               
                 move = false; // Stops moving when player is outside the max distance
                 commenceAttack = false;
                 transform.Translate(Vector3.zero);

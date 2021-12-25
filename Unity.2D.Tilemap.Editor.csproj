@@ -53,7 +53,7 @@
     <UnityVersion>2021.1.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="D:\Programs\Microsoft Visual Studios 2019\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Editor\GridSelection.cs" />
@@ -710,6 +710,12 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.16f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityEditor.UI.csproj">
@@ -719,14 +725,6 @@
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{B64A1BB1-F907-46FC-2956-F031A7EFEFC4}</Project>
       <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{2A60ECF0-4EC2-1120-A956-B1C19028F44B}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{AF340415-0D8B-1266-C45D-F65B82FB90AD}</Project>
-      <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

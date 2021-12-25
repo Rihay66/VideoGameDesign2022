@@ -53,34 +53,51 @@
     <UnityVersion>2021.1.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="D:\Programs\Microsoft Visual Studios 2019\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerTrigger_Temporary.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemPickUpProperties.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemPickUpInput.cs" />
+    <Compile Include="Assets\Scripts\MapEngine\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyProjectile.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
-    <Compile Include="Assets\Scripts\Entities\EnemyAIMelee.cs" />
+    <Compile Include="Assets\Scripts\Entities\EnemyItemDrop.cs" />
+    <Compile Include="Assets\Scripts\SoundEngine\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Entities\AI\EnemyAIMelee.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\Entities\AttackEntity\DamageArea.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipmentShopPickUpInput.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\Billboard.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemShopPickUpInput.cs" />
+    <Compile Include="Assets\Scripts\MapEngine\GridLocker.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerProjectiles.cs" />
     <Compile Include="Assets\Scripts\Player\HealthCalculator.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\Depreciated Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\NPC_text.cs" />
+    <Compile Include="Assets\Scripts\TemporaryScripts\BossStats.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyStats.cs" />
+    <Compile Include="Assets\Scripts\SoundEngine\Sound.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipmentSlot.cs" />
     <Compile Include="Assets\Scripts\MapEngine\MapSplitGenerator.cs" />
     <Compile Include="Assets\Scripts\Inventory\PlayerInventory.cs" />
+    <Compile Include="Assets\Scripts\TemporaryScripts\RestartButton.cs" />
     <Compile Include="Assets\Scripts\Player\CameraScript.cs" />
-    <Compile Include="Assets\Scripts\Entities\EnemyAIShooter.cs" />
+    <Compile Include="Assets\Scripts\Entities\AI\EnemyAIShooter.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemPickup.cs" />
+    <Compile Include="Assets\Scripts\Entities\AI\Special\EnemyBossAI.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\MapEngine\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityStats.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\QuitButton.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Equipment.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipmentPickUpInput.cs" />
+    <Compile Include="Assets\Scripts\Entities\ParticleMaster.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\GameManager_Temporary.cs" />
   </ItemGroup>
@@ -628,67 +645,53 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.16f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Tilemap.Extras">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.001">
+      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Core">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.IK.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Triangle.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.SpriteShape.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.State">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.2D.Tilemap.Extras.csproj">
-      <Project>{B4A9EFE6-CAB3-51E0-48DD-8E616206B8D0}</Project>
-      <Name>Unity.2D.Tilemap.Extras</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InternalAPIEngineBridge.001.csproj">
-      <Project>{8C8C098F-285C-341B-EA6D-F0A28EB2DC37}</Project>
-      <Name>Unity.InternalAPIEngineBridge.001</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.PixelPerfect.csproj">
-      <Project>{2D51F0C9-AC42-B6E0-4C56-50365F95D104}</Project>
-      <Name>Unity.2D.PixelPerfect</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{54517D72-7E4D-2736-048B-98E18D59F9A1}</Project>
-      <Name>Unity.Timeline</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{7D3A7D06-E28B-DB0F-23BB-E728E1468188}</Project>
-      <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
-      <Project>{A669F128-66C9-AA6C-2742-A7B3F6B80A90}</Project>
-      <Name>Unity.VisualScripting.Flow</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{B64A1BB1-F907-46FC-2956-F031A7EFEFC4}</Project>
       <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Core.csproj">
-      <Project>{BA61E329-3C2A-E5B6-2D4B-397DA95D0533}</Project>
-      <Name>Unity.VisualScripting.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{A71CBADE-FF79-8205-81F0-5524BB0CD126}</Project>
-      <Name>Unity.Mathematics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.IK.Runtime.csproj">
-      <Project>{F1974604-49FA-D445-00BA-F5A93F8D7AC6}</Project>
-      <Name>Unity.2D.IK.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Animation.Triangle.Runtime.csproj">
-      <Project>{622052DD-E24A-7128-9098-60CBDCC28F87}</Project>
-      <Name>Unity.2D.Animation.Triangle.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
-      <Project>{75CF9DB6-A208-3382-CB71-74FDFA7E8644}</Project>
-      <Name>Unity.2D.Animation.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
-      <Project>{D8148C26-F64C-E16E-4046-2DC48E42331B}</Project>
-      <Name>Unity.2D.Common.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.SpriteShape.Runtime.csproj">
-      <Project>{E6C0ABFB-FA01-1F5B-F3C4-5411BEC679A1}</Project>
-      <Name>Unity.2D.SpriteShape.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.State.csproj">
-      <Project>{D7A1E2F5-D8B8-FB38-FFA8-D09C1F8CCB5E}</Project>
-      <Name>Unity.VisualScripting.State</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

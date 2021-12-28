@@ -59,7 +59,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1801861023
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1775171528
@@ -235,6 +235,8 @@ GameObject:
   - component: {fileID: 3776362118824510331}
   - component: {fileID: 3776362118292018373}
   - component: {fileID: -8848691489255073140}
+  - component: {fileID: 467065353}
+  - component: {fileID: -4049448140794122126}
   m_Layer: 8
   m_Name: Enemy_Shooter_PlaceHolder
   m_TagString: Enemy
@@ -351,7 +353,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -367,13 +369,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d3476f864ed2e42a9281875ee93772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
-  minDistance: 3.5
+  movementSpeed: 2.2
+  minDistance: 4.5
   maxDistance: 20
   maxHeight: 5
   exclamationObject: {fileID: 2101483219}
+  move: 0
+  commenceAttack: 0
+  originalMoveSpeed: 0
+  originalDamage: 0
+  rageModifier: 1.4
+  maxTimeToRage: 70
+  timeToRage: 0
   Melee: 0
   Shooter: 1
+  Enraged: 1
   faceRight: 1
   fireRate: 3
   damage: 15
@@ -394,7 +404,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 50
+  currentHealth: 0
+  Armor: 0
   healthBarObject: {fileID: 5215053128725749808}
+  coinsOnDeath: 0
+  maxCoinsOnDeath: 25
+  canDropCoins: 0
+--- !u!114 &467065353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3776362118824510330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06119537b9a77b643bd152ca1301be7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4049448140794122126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3776362118824510330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae9f00d86d087347be16a529eaaf70b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomItemRarity: 6
+  ItemPrefabs:
+  - {fileID: 2754950524264749709, guid: 5804bfcbddb78514e88efa1fb410f009, type: 3}
+  - {fileID: 7915089686415251309, guid: ff482a776b27c6d4f9654e31bf1822f2, type: 3}
+  - {fileID: 7810875116394614201, guid: eccbc14b075d34642a0dc62474be6127, type: 3}
+  - {fileID: 6378410909784544982, guid: ddba1a87dc5d2074ab367fdec308bcb5, type: 3}
+  - {fileID: 3191235583656322202, guid: d129849914a979d489e2d6db41cde086, type: 3}
+  - {fileID: 2347076722755509782, guid: bba9de3c041064941a1ea53119f82e0c, type: 3}
+  - {fileID: 8229582287771154766, guid: add04d9df353e94468e81295a6893b9b, type: 3}
+  - {fileID: 2663693017387340457, guid: 6d0c7c58487aab948a7cb6084c7bef28, type: 3}
 --- !u!1 &7210113548398000149
 GameObject:
   m_ObjectHideFlags: 0

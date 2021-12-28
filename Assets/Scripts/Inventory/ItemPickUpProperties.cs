@@ -5,43 +5,57 @@ using UnityEngine;
 public class ItemPickUpProperties : MonoBehaviour
 {
     public float radius = 3f;
+    //shop variables
+    public bool isShopItem = false;
+    public float shopCost;
 
-    private GameObject player;
-    private bool hasInteracted = false;
+    [HideInInspector]
+    public GameObject player;
+    public bool hasInteracted { get; private set; }
 
     public virtual void InteractAction()
     {
         //Do something like sub or add health
         // This method is meant to be overwritten
-        Debug.Log("Interacted with " + transform.name);
+        // if(hasInteracted == true)
+        // {
+        //     Debug.Log("Interacted with " + transform.name);
+        // }
+
+        // adding on buyable piece here
+
     }
 
     void Start()
-    {
-        GameObject playerManager = GameObject.FindGameObjectWithTag("GameManager");
-        if (playerManager.GetComponent<PlayerManager>() != null)
+    {  
+        if (PlayerManager.instance.playerInstance != null)
         {
             player = PlayerManager.instance.playerInstance;
         }
         else
         {
-            if (playerManager.GetComponent<PlayerManager>() == null)
+            if (PlayerManager.instance == null)
             {
-                Debug.LogError(playerManager.name + " DOES NOT HAVE PlayerTargetManager.cs!!!");
+                Debug.LogError(PlayerManager.instance.name + " Is either not found or its missing!");
+                return;
             }
         }
     }
 
     private void Update()
     {
-        if (player != null && !hasInteracted)
+        if (player != null)
         {
             float distance = Vector3.Distance(player.transform.position, transform.position);
-            if (distance <= radius)
+            if (distance < radius)
             {
-                InteractAction();
                 hasInteracted = true;
             }
+            else if(distance > radius)
+            {            
+                hasInteracted = false;
+            }
+            InteractAction();
         }
     }
 

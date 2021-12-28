@@ -12,12 +12,32 @@ public class EnemyAI : MonoBehaviour
     public float maxHeight = 1.5f;
     public GameObject exclamationObject; // Temporary visual object (Use to show if the enemy is detecting the player within out side max distance and vice versa)
 
-    bool move = false;
-    public bool commenceAttack { get; private set; } // 'Get' means to use as reference and 'private set' means it can be changed only inside this script
+    [HideInInspector]
+    public bool move = false;
+
+    [HideInInspector]
+    public bool commenceAttack;  // 'Get' means to use as reference and 'private set' means it can be changed only inside this script
+
+    [Header("Rage Values")]
+    //values for the purpose of returning to normal values after rage
+    [HideInInspector]
+    public float originalMoveSpeed; 
+    [HideInInspector]
+    public float originalDamage;
+
+    public float rageModifier = 1.3f;
+    public float maxTimeToRage;
+    [HideInInspector]
+    //time to rage is kept as an int for the purpose of using system threading sleep
+    public float timeToRage;
 
     [Header("Enemy Class")]
     public bool Melee;
     public bool Shooter;
+    [Header("Enemy Abilities")]
+    public bool Enraged;
+
+    public bool rage { get; private set; } = false;
 
     private void OnValidate()
     {
@@ -33,29 +53,43 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb { get; private set; }
 
     [HideInInspector]
     public GameObject player { get; private set; }
 
-    void Start()
+    void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
         exclamationObject.SetActive(false);
-        CheckForTarget();
-        if(!Shooter && !Melee)
+        originalMoveSpeed = movementSpeed;
+        timeToRage = Random.Range(30f, maxTimeToRage);
+    }
+
+    void CheckForPhysics()
+    {
+        if (rb == null)
         {
-            Debug.LogError(this.gameObject.name + "'s class hasn't been set!");
+            rb = gameObject.GetComponent<Rigidbody2D>();
+            Debug.LogWarning(this.name + " is not getting the rigidbody correctly");
             return;
         }
     }
 
-    private void Update()
-    {   
-        //Checks for the players distance from the enemy
-        CheckDistance();
-        //Moves the Entity
-        Movement();
+    void FixedUpdate()
+    {
+        CheckForPhysics();
+        if(player != null)
+        {
+            //Checks for the players distance from the enemy
+            CheckDistance();
+            //Moves the Entity
+            Movement();
+        }
+        else
+        {
+            CheckForTarget();
+        }
     }
 
     void CheckForTarget()
@@ -64,16 +98,24 @@ public class EnemyAI : MonoBehaviour
         if (PlayerManager.instance.playerInstance != null)
         {
             player = PlayerManager.instance.playerInstance;
+            if(Enraged == true)
+            {
+                StartCoroutine(Rage());
+                print("Calling rage");
+            }
         }
         else
         {
             // If there isn't a PlayerManager it will give an error
             Debug.LogError(PlayerManager.instance.name + " Is either not found or its missing!");
+            return;
         }
     }
 
-    void CheckDistance()
+    public virtual void CheckDistance()
     {
+        // Meant to be overwritten
+        // Specify what the Enemy does depending on the player's distance
         //Specifies to check the distance on the x-axis
         Vector2 self = new Vector2(transform.position.x, 0);
         Vector2 other = new Vector2(player.transform.position.x, 0);
@@ -83,60 +125,23 @@ public class EnemyAI : MonoBehaviour
         //Specifies to check the height between entities
         float selfHeight = transform.position.y + maxHeight;
         float otherHeight = player.transform.position.y;
-        // When the player is on the same height or below the enemy
 
-        if (pos <= maxDistance && selfHeight >= otherHeight && player != null) 
+        // When the player is on the same height or below the enemy
+        if (pos >= maxDistance || selfHeight <= otherHeight) //When player is on top or above the enemy
         {
-            exclamationObject.SetActive(true);
-            FaceTarget();
-            // Attack from distance
-            if(Shooter && !Melee)
-            {
-                // []Check if the player is above the enemy at a certain height make the reference transform object inside the enemy rotate only 45 degrees 
-                // []The referene is only valid when the enemy is set to a shooter class
-                commenceAttack = true;
-                Attack();
-            }
-            if (pos <= minDistance)
-            {
-                //Stop moving
-                // Attack from close 
-                if(!Shooter && Melee)
-                {
-                    commenceAttack = true;
-                    Attack();
-                }
-                move = false;
-                transform.Translate(Vector3.zero);
-            }
-            else
-            {
-                if (pos >= minDistance)
-                {
-                    //Keep moving
-                    move = true;
-                }
-            }
+            exclamationObject.SetActive(false);
+            move = false; // Stops moving when player is outside the max distance
+            commenceAttack = false;
+            //transform.Translate(Vector2.zero);
         }
         else
         {
-            if (pos >= maxDistance || selfHeight <= otherHeight) //When player is on top or above the enemy
+            if (player.activeSelf == false)
             {
-                exclamationObject.SetActive(false);               
-                move = false; // Stops moving when player is outside the max distance
+                move = false; // When player is set to false the enemy will stop 
                 commenceAttack = false;
-                transform.Translate(Vector3.zero);
+                //transform.Translate(Vector2.zero);
             }
-            else
-            {
-                if (player.activeSelf == false)
-                {
-                    move = false; // When player is set to false the enemy will stop 
-                    commenceAttack = false;
-                    transform.Translate(Vector3.zero);
-                }
-            }
-
         }
     }
 
@@ -146,7 +151,7 @@ public class EnemyAI : MonoBehaviour
     [HideInInspector]
     public bool faceRight = true;
 
-    void FaceTarget()
+    public void FaceTarget()
     {
         if(player != null)
         {
@@ -171,11 +176,23 @@ public class EnemyAI : MonoBehaviour
 
     void Movement()
     {
-        Vector2 targetPos = new Vector2(player.transform.position.x, rb.position.y); // Checks for the position of the player
+        //Vector2 targetPos = new Vector2(player.transform.position.x, rb.position.y); // Checks for the position of the player
         if (move == true)
         {
             //Movement
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, movementSpeed * Time.deltaTime);
+            //transform.position = Vector2.MoveTowards(transform.position, targetPos, movementSpeed * Time.deltaTime);
+
+            if (transform.position.x < player.transform.position.x)
+            {
+                //move right
+                rb.velocity = new Vector2(movementSpeed, rb.velocity.y);
+            }
+            else if (transform.position.x > player.transform.position.x)
+            {
+                //move left
+                rb.velocity = new Vector2(-movementSpeed, rb.velocity.y);
+            }
+
         }
     }
 
@@ -188,5 +205,20 @@ public class EnemyAI : MonoBehaviour
       //      Debug.Log("Attacking " + player.name);
        // }
     }
-}
+    public virtual void RageModifierVoid()
+    {
+        //mod rage...
+        Debug.Log("Modifying the enemy!");
+    }
+    IEnumerator Rage()
+    {
+        yield return new WaitForSeconds(timeToRage);
+        Debug.Log(this.name + " is enraged!");
+        rage = true;
+        RageModifierVoid();
+        // stopping the coroutine
+        StopCoroutine(Rage());
+    }
 
+
+}

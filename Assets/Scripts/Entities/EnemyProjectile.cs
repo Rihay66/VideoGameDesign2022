@@ -13,6 +13,11 @@ public class EnemyProjectile : MonoBehaviour
 
     private Vector3 shootDirection;
 
+    private void Awake()
+    {
+        Destroy(gameObject, 4f);
+    }
+
     public void setup(Vector3 shootDir)
     {
         this.shootDirection = shootDir;
@@ -41,7 +46,11 @@ public class EnemyProjectile : MonoBehaviour
             if (health != null)
             {
                 health.TakeDamage(projectileDamage);
+                Destroy(gameObject);
             }
+        }
+        else if(collision.gameObject.layer != 11)
+        {
             Destroy(gameObject);
         }
     }

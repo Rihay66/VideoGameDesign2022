@@ -13,6 +13,7 @@ public class PlayerCombat : MonoBehaviour
     public GameObject player;
 
     public Transform attackPoint;
+    [HideInInspector]
     public float damage = 10f;
 
 

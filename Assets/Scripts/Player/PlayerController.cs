@@ -5,50 +5,106 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    // defining private variables
-    private float playerSpeed;
+    public bool playerControllerPause = true;
+    //player for easy referencing
+    private GameObject player;
+    // defines the player speed publicly which can be changed by other scripts
+    [HideInInspector]
+    public float playerSpeed;
 
     private Rigidbody2D rb;
+    [HideInInspector]
     public float jumpPower;
 
     // public variable since it will be modded alot
-    public bool isJumping;
+    private bool isJumping;
 
     // controls
-    public float leftRight;
-    public float jump;
+    private float leftRight;
+    private float jump;
 
     // move clamper
-    public bool xMoving = false;
+    private bool xMoving = false;
 
     // variable to tell whether or not user is left or right
-    public float turnDirection = 1f;
+    private float turnDirection = 1f;
     bool faceRight = true;
+    //particles and other artsy things
+    [Header("Particle Parameters")]
+    public Transform playerFeet;
+
+    private ParticleSystem dustOnJump;
+    private ParticleSystem dustOnImpact;
+
+    private ParticleMaster master;
+
+    private bool playerDisabled = true;
 
     // Start is called before the first frame update
     void Start()
     {
         // control initalize
+        StartCoroutine(enableThePlayer());
         rb = GetComponent<Rigidbody2D>();
-        playerSpeed = 10.0f;
-        jumpPower = 500.0f;
+        master = gameObject.GetComponent<ParticleMaster>();
         isJumping = false;
+        if (PlayerManager.instance.playerInstance != null)
+        {
+            player = PlayerManager.instance.playerInstance;
+        }
+        else
+        {
+            // If there isn't a PlayerManager it will give an error
+            Debug.LogError(PlayerManager.instance.name + " Is either not found or its missing!");
+            return;
+        }
+        if (master != null)
+        {
+            if (master.entity != gameObject)
+            {
+                master.setEntity(gameObject);
+            }
+        }
+        else if (master == null)
+        {
+            Debug.LogError("No ParticleMaster script found on " + gameObject.name);
+            return;
+        }
+        dustOnJump = Resources.Load<ParticleSystem>("Particles/dustOnJump");
+        dustOnImpact = Resources.Load<ParticleSystem>("Particles/dustOnImpact");
+        if(playerControllerPause == true)
+        {
+            StartCoroutine(enableThePlayer());
+        }
+        else
+        {
+            playerDisabled = false;
+        }
+    }
 
+    IEnumerator enableThePlayer()
+    {
+        yield return new WaitForSeconds(20f);
+        playerDisabled = false;
+        StopAllCoroutines();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //putting in controls so they can actively update
-        leftRight = Input.GetAxis("Horizontal");
-        jump = Input.GetAxis("Jump");
-        //controls
-        xControls();
-        Jumping();
-        MoveClamp();
-        spriteMover();
-        //sprite mover and bullet direction detector
-        SpriteProjectileMover();
+        if(playerDisabled != true)
+        {
+            //putting in controls so they can actively update
+            leftRight = Input.GetAxis("Horizontal");
+            jump = Input.GetAxis("Jump");
+            //controls
+            xControls();
+            Jumping();
+            MoveClamp();
+            spriteMover();
+            //sprite mover and bullet direction detector
+            SpriteProjectileMover();
+        }
     }
     private void xControls()
     {
@@ -78,17 +134,26 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Time.deltaTime * jumpPower * jump * transform.up, ForceMode2D.Impulse);
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -jumpPower, jumpPower));
             isJumping = true;
-            
+            //particle master reference for dustOnJump effect
+            if(master != null)
+            {
+                master.InstantiateParticle(dustOnJump, "movement", "dustOnJump", playerFeet);
+            }
         }
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //when the user hits the ground with the tag ground it will reset the jumps
         if (collision.gameObject.tag == "Ground")
         {
             isJumping = false;
+
+            if(master != null)
+            {
+                master.InstantiateParticle(dustOnImpact, "movement", "dustOnJump", playerFeet);
+            }
         }
     }
     private void MoveClamp()

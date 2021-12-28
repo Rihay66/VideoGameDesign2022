@@ -14,24 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
-    - Assets/Scenes/EntitiesTestScene.unity
-    - Assets/Scripts/Entities/EnemyAI.cs
-    - Assets/Scripts/Inventory.meta
-    - Assets/Scripts/Inventory/Item.cs
-    - Assets/Scripts/Inventory/Item.cs.meta
-    - Assets/Scripts/Inventory/ItemInputPickup.cs
-    - Assets/Scripts/Inventory/ItemInputPickup.cs.meta
-    - Assets/Scripts/Inventory/ItemProperties.cs
-    - Assets/Scripts/Inventory/ItemProperties.cs.meta
-    - Assets/Scripts/MapEngine.meta
-    - Assets/Scripts/MapEngine/MapGenerator.cs
-    - Assets/Scripts/MapEngine/MapGenerator.cs.meta
-    - Assets/Scripts/MapEngine/MapSplitGenerator.cs
-    - Assets/Scripts/MapEngine/MapSplitGenerator.cs.meta
-    - Packages/manifest.json
-    - Packages/packages-lock.json
     - 
-    m_Values: 0000000000000000000000000000000000
+    m_Values: 01
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 

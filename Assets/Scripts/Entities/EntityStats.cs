@@ -6,7 +6,9 @@ public class EntityStats : MonoBehaviour
 {
     [Header("Stats")]
     public float MaxHealth = 100f;
-    public float currentHealth { get; private set; }
+    [HideInInspector]
+    public float currentHealth; //{ get; private set; }
+    public float Armor = 0f;
 
     private void Start()
     {
@@ -15,11 +17,28 @@ public class EntityStats : MonoBehaviour
 
     public void TakeDamage(float damage) // This method is called from other scripts and passes in the damage to the entity
     {
+        damage -= Armor;
         currentHealth -= damage; // Substracts health with the given damage
         Debug.Log(this.name + " has taken " + damage + " damage!");
         if(currentHealth <= 0f) // When the health reaches zero or lower
         {
             Die(); // The entity will die in a certain way
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (currentHealth > MaxHealth)
+        {
+            currentHealth = MaxHealth;
+        }
+    }
+
+    public void RestoreHealth(float amount)
+    {
+        if (currentHealth < MaxHealth)
+        {
+            currentHealth += amount;
         }
     }
 

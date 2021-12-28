@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 // this scripts purpose is to detect what direction the user is facing in order to tell where to shoot the item
 public class PlayerProjectiles : MonoBehaviour
@@ -12,32 +9,17 @@ public class PlayerProjectiles : MonoBehaviour
 
     public float projSpeed = 5f;
 
-    private float projectileKillTime = 3f;
-    private Rigidbody2D rb;
-
-    
+    private Rigidbody2D rb; 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // detecting whether or not to shoot right or left
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * projSpeed;
-
-
+        Destroy(gameObject, 4f);
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        //now adding the velocity for the projectile  
-
-        killTime();
-    }
-    private void killTime()
-    {
-        Object.Destroy(gameObject, projectileKillTime);
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -47,13 +29,13 @@ public class PlayerProjectiles : MonoBehaviour
             {
                 health.TakeDamage(damage);
                 Debug.Log("Hit! Took " + damage + "damage!");
-                
+                Destroy(gameObject);
             }
-
-            Destroy(gameObject);
-
         }
-        
+        else if(collision.gameObject.layer != 11)
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

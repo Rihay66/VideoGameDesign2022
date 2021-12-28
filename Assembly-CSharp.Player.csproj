@@ -53,34 +53,51 @@
     <UnityVersion>2021.1.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="D:\Programs\Microsoft Visual Studios 2019\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerTrigger_Temporary.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemPickUpProperties.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemPickUpInput.cs" />
+    <Compile Include="Assets\Scripts\MapEngine\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyProjectile.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
-    <Compile Include="Assets\Scripts\Entities\EnemyAIMelee.cs" />
+    <Compile Include="Assets\Scripts\Entities\EnemyItemDrop.cs" />
+    <Compile Include="Assets\Scripts\SoundEngine\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Entities\AI\EnemyAIMelee.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\Entities\AttackEntity\DamageArea.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipmentShopPickUpInput.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\Billboard.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemShopPickUpInput.cs" />
+    <Compile Include="Assets\Scripts\MapEngine\GridLocker.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerProjectiles.cs" />
     <Compile Include="Assets\Scripts\Player\HealthCalculator.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\Depreciated Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\NPC_text.cs" />
+    <Compile Include="Assets\Scripts\TemporaryScripts\BossStats.cs" />
     <Compile Include="Assets\Scripts\Entities\EnemyStats.cs" />
+    <Compile Include="Assets\Scripts\SoundEngine\Sound.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipmentSlot.cs" />
     <Compile Include="Assets\Scripts\MapEngine\MapSplitGenerator.cs" />
     <Compile Include="Assets\Scripts\Inventory\PlayerInventory.cs" />
+    <Compile Include="Assets\Scripts\TemporaryScripts\RestartButton.cs" />
     <Compile Include="Assets\Scripts\Player\CameraScript.cs" />
-    <Compile Include="Assets\Scripts\Entities\EnemyAIShooter.cs" />
+    <Compile Include="Assets\Scripts\Entities\AI\EnemyAIShooter.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemPickup.cs" />
+    <Compile Include="Assets\Scripts\Entities\AI\Special\EnemyBossAI.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\MapEngine\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityStats.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\QuitButton.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Equipment.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipmentPickUpInput.cs" />
+    <Compile Include="Assets\Scripts\Entities\ParticleMaster.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\TemporaryScripts\GameManager_Temporary.cs" />
   </ItemGroup>

@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance != this)
+        if (instance != this)
         {
             instance = this;
         }

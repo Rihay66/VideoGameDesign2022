@@ -26,7 +26,7 @@ public class MapSplitGenerator : MonoBehaviour
     {
         spawnPointSelection = Random.Range(0, gridMapsSpawnPoints.Length);
         ErrorCheck();
-        Invoke("SpawnInMaps", 1f);
+        Invoke("SpawnInMaps", 0.5f);
     }
 
     void SpawnInMaps()

@@ -784,6 +784,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8793148617404839561, guid: 17349c83422356b43a31a46a5060b36f, type: 3}
+      propertyPath: canDropCoins
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8793148617404839561, guid: 17349c83422356b43a31a46a5060b36f, type: 3}
+      propertyPath: coinsOnDeath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8793148617404839561, guid: 17349c83422356b43a31a46a5060b36f, type: 3}
+      propertyPath: maxCoinsOnDeath
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2476269693363578633, guid: 17349c83422356b43a31a46a5060b36f, type: 3}
       propertyPath: m_Name
       value: Enemy_Melee_PlaceHolder (2)

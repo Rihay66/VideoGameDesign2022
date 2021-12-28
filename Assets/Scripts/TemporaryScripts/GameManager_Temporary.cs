@@ -17,12 +17,24 @@ public class GameManager_Temporary : MonoBehaviour
         }
         anim = transitionUI.GetComponent<Animator>();
     }
-
+    private void Update()
+    {
+        if (instance != this)
+        {
+            instance = this;
+            Debug.Log("Reset Instance!");
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+            Debug.Log("Quitting!");
+        }
+    }
     public void restartLevel()
     {
-        // Is called to restart the same scene
-        Scene sence = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(sence.name);
+        // Is called to show a game over    
+        SceneManager.LoadScene(2);
     }
 
     public void EndOfGame()

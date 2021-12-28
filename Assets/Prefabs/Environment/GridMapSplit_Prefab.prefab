@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftGridMaps:
-  - {fileID: 255800175189061438, guid: 552db0319dccecc4ba01bc39b6068a9a, type: 3}
-  - {fileID: 255800175189061438, guid: 552db0319dccecc4ba01bc39b6068a9a, type: 3}
+  - {fileID: 2431866399164260123, guid: aabe771c3f136e44a99800e37eb87ea6, type: 3}
+  - {fileID: 1702220235632485113, guid: 7099d75e9e282c94d8f3d7355008212e, type: 3}
   rightGridMaps:
-  - {fileID: 255800175189061438, guid: 552db0319dccecc4ba01bc39b6068a9a, type: 3}
-  - {fileID: 255800175189061438, guid: 552db0319dccecc4ba01bc39b6068a9a, type: 3}
+  - {fileID: 2564909323887720045, guid: 6414f067a322fc54db6a3b79f73537a0, type: 3}
+  - {fileID: 6764569325491705414, guid: 96a2a9a08c1a93949b84baf6bcb26cc0, type: 3}
   gridMapsSpawnPoints:
   - {fileID: 5773486083459989304}
   - {fileID: 5773486083524066803}
@@ -78,7 +78,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5773486083459989311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -9.96, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5773486082376528145}
@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5773486083524066802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 9.55, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5773486082376528145}

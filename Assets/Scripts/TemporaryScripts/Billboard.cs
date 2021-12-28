@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
     public GameObject cam;
 
-    void Update()
+    void FixedUpdate()
     {
         GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
         cam = camera;
